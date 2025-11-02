@@ -1,0 +1,11 @@
+# SELECT
+#     user_id,
+#     CONCAT(UPPER(LEFT(name, 1)), LOWER(SUBSTRING(name, 2))) AS name
+# FROM Users
+# ORDER BY user_id;
+
+import pandas as pd
+
+def fix_names(users: pd.DataFrame) -> pd.DataFrame:
+    users['name'] = users['name'].str.capitalize()
+    return users.sort_values('user_id', ascending=True)
